@@ -60,18 +60,21 @@ func GetFirst(w http.ResponseWriter, r *http.Request) {
 	Calc1.Number1 = rand.Intn(100)
 	json.NewEncoder(w).Encode(Calc1.Number1)
 	w.WriteHeader(http.StatusOK)
+	w.Header().Set("Content-Type", "application/json")
 }
 
 func GetSecond(w http.ResponseWriter, r *http.Request) {
 	Calc1.Number2 = rand.Intn(100)
 	json.NewEncoder(w).Encode(Calc1.Number2)
 	w.WriteHeader(http.StatusOK)
+	w.Header().Set("Content-Type", "application/json")
 }
 
 func GetAdd(w http.ResponseWriter, r *http.Request) {
 	Calc1.Sum = Calc1.Number1 + Calc1.Number2
 	json.NewEncoder(w).Encode(Calc1.Sum)
 	w.WriteHeader(http.StatusOK)
+	w.Header().Set("Content-Type", "application/json")
 }
 
 func GetSub(w http.ResponseWriter, r *http.Request) {
@@ -79,6 +82,7 @@ func GetSub(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(Calc1)
 	json.NewEncoder(w).Encode(Calc1.Sub)
 	w.WriteHeader(http.StatusOK)
+	w.Header().Set("Content-Type", "application/json")
 }
 
 func GetMul(w http.ResponseWriter, r *http.Request) {
@@ -86,6 +90,7 @@ func GetMul(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(Calc1)
 	json.NewEncoder(w).Encode(Calc1.Mul)
 	w.WriteHeader(http.StatusOK)
+	w.Header().Set("Content-Type", "application/json")
 }
 
 func GetDiv(w http.ResponseWriter, r *http.Request) {
@@ -93,4 +98,5 @@ func GetDiv(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(Calc1)
 	json.NewEncoder(w).Encode(Calc1.Div)
 	w.WriteHeader(http.StatusOK)
+	w.Header().Set("Content-Type", "application/json")
 }
