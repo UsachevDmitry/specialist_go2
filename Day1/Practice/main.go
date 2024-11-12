@@ -59,32 +59,38 @@ func GetInfo(w http.ResponseWriter, r *http.Request) {
 func GetFirst(w http.ResponseWriter, r *http.Request) {
 	Calc1.Number1 = rand.Intn(100)
 	json.NewEncoder(w).Encode(Calc1.Number1)
+	w.WriteHeader(http.StatusOK)
 }
 
 func GetSecond(w http.ResponseWriter, r *http.Request) {
 	Calc1.Number2 = rand.Intn(100)
 	json.NewEncoder(w).Encode(Calc1.Number2)
+	w.WriteHeader(http.StatusOK)
 }
 
 func GetAdd(w http.ResponseWriter, r *http.Request) {
 	Calc1.Sum = Calc1.Number1 + Calc1.Number2
 	json.NewEncoder(w).Encode(Calc1.Sum)
+	w.WriteHeader(http.StatusOK)
 }
 
 func GetSub(w http.ResponseWriter, r *http.Request) {
 	Calc1.Sub = Calc1.Number1 - Calc1.Number2
 	json.NewEncoder(w).Encode(Calc1)
 	json.NewEncoder(w).Encode(Calc1.Sub)
+	w.WriteHeader(http.StatusOK)
 }
 
 func GetMul(w http.ResponseWriter, r *http.Request) {
 	Calc1.Mul = Calc1.Number1 * Calc1.Number2
 	json.NewEncoder(w).Encode(Calc1)
 	json.NewEncoder(w).Encode(Calc1.Mul)
+	w.WriteHeader(http.StatusOK)
 }
 
 func GetDiv(w http.ResponseWriter, r *http.Request) {
-	Calc1.Div = float64(Calc1.Number1 / Calc1.Number2)
+	Calc1.Div = float64(Calc1.Number1) / float64(Calc1.Number2)
 	json.NewEncoder(w).Encode(Calc1)
 	json.NewEncoder(w).Encode(Calc1.Div)
+	w.WriteHeader(http.StatusOK)
 }
