@@ -40,8 +40,8 @@ func main() {
 	router.HandleFunc("/second", GetSecond).Methods("GET")
 	router.HandleFunc("/add", GetAdd).Methods("GET")
 	router.HandleFunc("/sub", GetSub).Methods("GET")
-	router.HandleFunc("/mul", GetSub).Methods("GET")
-	router.HandleFunc("/div", GetSub).Methods("GET")
+	router.HandleFunc("/mul", GetMul).Methods("GET")
+	router.HandleFunc("/div", GetDiv).Methods("GET")
 	log.Println("Router configured successfully! Let's go!")
 	log.Fatal(http.ListenAndServe(":"+port, router))
 }
@@ -88,11 +88,3 @@ func GetDiv(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(Calc1)
 	json.NewEncoder(w).Encode(Calc1.Div)
 }
-
-
-// "/first"  // Случайное число
-// "/second" // Случайное число
-// "/add"    // Сумма двух случайных чисел
-// "/sub"    // Разность
-// "/mul"    // Произведение
-// "/div"    // Деление
