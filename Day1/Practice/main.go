@@ -84,7 +84,7 @@ func GetMul(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetDiv(w http.ResponseWriter, r *http.Request) {
-	Calc1.Mul = Calc1.Number1 / Calc1.Number2
+	Calc1.Div = float64(Calc1.Number1 / Calc1.Number2)
 	json.NewEncoder(w).Encode(Calc1)
 	json.NewEncoder(w).Encode(Calc1.Div)
 }
