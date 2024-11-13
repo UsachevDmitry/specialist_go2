@@ -1,11 +1,11 @@
 package main
 
 import (
+	"github.com/gorilla/mux"
 	"encoding/json"
 	"fmt"
 	"log"
-	"math/rand"
-	"github.com/gorilla/mux"
+	"math/rand"	
 	"net/http"
 )
 
