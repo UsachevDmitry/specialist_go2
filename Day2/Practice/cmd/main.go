@@ -13,7 +13,10 @@ const defaultAddr = "localhost:8080"
 var addr = flag.String("a", defaultAddr, "Адрес HTTP-сервера")
 
 func main() {
+	internal.Sqlite() 
 	flag.Parse()
+	internal.Logger()
+
 	addrEnv := os.Getenv("ADDRESS")
 	if addrEnv != "" {
 		*addr = addrEnv
@@ -25,8 +28,7 @@ func main() {
 	router.HandleFunc("/tasks/{taskid}", internal.WithLoggingHandle(internal.HandleGetTaskByID())).Methods(http.MethodGet)
 	router.HandleFunc("/tasks/", internal.WithLoggingHandle(internal.HandleDeleteTasks())).Methods(http.MethodDelete)
 	router.HandleFunc("/tasks/{taskid}", internal.WithLoggingHandle(internal.HandleDeleteTaskByID())).Methods(http.MethodDelete)
-
-	internal.Logger()
+	
 	internal.GlobalSugar.Infow(
 		"Starting server",
 		"addr", *addr,

@@ -22,6 +22,7 @@ func HandlePostTasks() http.Handler {
 		var NewTaskID int = len(DB) + 1
 		task.ID = NewTaskID
 		DB = append(DB, task)
+		AddTaskInDB(Qdb, task)
 		GlobalSugar.Infoln("task with id =", NewTaskID, "Created.")
 		StatusCode = WriteHeaderAndSaveStatus(http.StatusCreated, w)
 		json.NewEncoder(w).Encode(task)
